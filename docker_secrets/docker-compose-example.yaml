@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  web:
+    image: nginxdemos/hello
+    secrets:                    # secrets block only for 'web' service
+     - mi_secreto_swarm
+     - secret_file
+
+secrets:                        # top level secrets block
+  mi_secreto_swarm:
+    external: true
+  secret_file:
+    file: mi_secret_en_fichero.txt
